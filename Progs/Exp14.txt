@@ -1,0 +1,35 @@
+class BankAccount:
+# Constructor to initialize account details
+def init (self, account_holder, balance=0):
+self.account_holder = account_holder
+self.balance = balance
+# Method to deposit money into the account
+def deposit(self, amount):
+if amount > 0:
+self.balance += amount
+print(f"Deposited: {amount}. New balance: {self.balance}")
+else:
+print("Deposit amount should be positive.")
+# Method to withdraw money from the account
+def withdraw(self, amount):
+if amount <= self.balance and amount > 0:
+self.balance -= amount
+print(f"Withdrawn: {amount}. New balance: {self.balance}")
+else:
+print("Insufficient balance or invalid withdrawal amount.")
+# Method to display account details
+def display_account_info(self):
+print("\n--- Account Information ---")
+print(f"Account Holder: {self.account_holder}")
+print(f"Current Balance: {self.balance}")
+# Creating an object of the BankAccount class
+account1 = BankAccount("John Doe", 1000)
+44
+# Display account details
+account1.display_account_info()
+# Deposit money into the account
+account1.deposit(500)
+# Withdraw money from the account
+account1.withdraw(200)
+# Display account details after transactions
+account1.display_account_info()

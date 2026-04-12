@@ -1,0 +1,20 @@
+class Student:
+# Constructor to initialize student information
+ def __init__(self, name, roll_number, age, course):
+    self.name = name
+    self.roll_number = roll_number
+    self.age = age
+    self.course = course
+# Method to display student information
+ def display_info(self):
+    print("\n--- Student Information ---")
+    print(f"Name: {self.name}")
+    print(f"Roll Number: {self.roll_number}")
+    print(f"Age: {self.age}")
+    print(f"Course: {self.course}")
+# Create student objects and input details
+student1 = Student("John Doe","101",20,"Computer Science")
+student2 = Student("Jane Smith", "102", 21, "Electrical Engineering")
+# Display student information
+student1.display_info()
+student2.display_info()

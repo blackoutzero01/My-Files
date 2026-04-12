@@ -1,0 +1,28 @@
+def generate_bill(item_dict):
+    print("\n--- Retail Bill Statement ---")
+    print(f"{'Item Name':<20} {'Quantity':<10} {'Price per Unit':<15} {'Total Price':<15}")
+    total_amount = 0
+    # Loop through the dictionary and print the bill details for each item
+    for item, details in item_dict.items():
+        item_name = item
+        quantity = details['Quantity']
+        price_per_unit = details['Price per Unit']
+        total_price = quantity * price_per_unit
+        print(f"{item_name:<20} {quantity:<10} {price_per_unit:<15} {total_price:<15}")
+        total_amount += total_price
+        # Print the total amount
+        print(f"\n{'Total Amount':<20} {'':<10} {'':<15} {total_amount:<15}")
+# Input items and their details
+items = {}
+num_items = int(input("Enter the number of items: "))
+for _ in range(num_items):
+        item_name = input("Enter the item name: ")
+        quantity = int(input(f"Enter the quantity for {item_name}: "))
+        price_per_unit = float(input(f"Enter the price per unit for {item_name}: "))
+        # Store item details in the dictionary
+        items[item_name] = {
+            'Quantity': quantity,
+            'Price per Unit': price_per_unit
+        }
+ # Generate and display the retail bill
+generate_bill(items)

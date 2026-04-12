@@ -1,0 +1,27 @@
+def display_marks_statement(student):
+    print("\n--- Student Marks Statement ---")
+    print(f"Name: {student['Name']}")
+    print(f"Roll Number: {student['Roll Number']}")
+    print("Subject-wise Marks:")
+    for subject, marks in student['Marks'].items():
+        print(f" {subject}: {marks}")
+    total = sum(student['Marks'].values())
+    average = total / len(student['Marks'])
+    print(f"Total Marks: {total}")
+    print(f"Average Marks: {average:.2f}")
+    if average >= 50:
+        print("Result: Passed")
+    else:
+        print("Result: Failed")
+# Input student information and marks
+student= {}
+student['Name'] = input("Enter the student's name: ")
+student['Roll Number'] = input("Enter the roll number: ")
+num_subjects = int(input("Enter the number of subjects: "))
+student['Marks'] = {}
+for _ in range(num_subjects):
+    subject = input("Enter the subject name: ")
+    marks = int(input(f"Enter the marks for {subject}: "))
+    student['Marks'][subject] = marks
+# Display the marks statement
+display_marks_statement(student)

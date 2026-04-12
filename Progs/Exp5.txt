@@ -1,0 +1,50 @@
+def is_leap_year(year):
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+
+def get_first_day_of_month(year, month):
+    if month < 3:
+        month += 12
+        year -= 1
+
+    k = year % 100
+    j = year // 100
+    day_code = (1 + (13 * (month + 1)) // 5 + k + (k // 4) + (j // 4) - (2 * j)) % 7
+    return (day_code + 6) % 7   # Adjusting to make Sunday = 0
+
+
+def display_calendar(year, month):
+    """Display the calendar for a given year and month."""
+    days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    # Adjust February for leap years
+    if is_leap_year(year):
+        month_days[1] = 29
+
+    # Get the number of days in the month and the first day of the month
+    days_in_month = month_days[month - 1]
+    first_day = get_first_day_of_month(year, month)
+
+    # Print the calendar header
+    print(f"\n{year}-{month:02}")
+    print(" ".join(days))
+
+    # Print leading spaces for the first day
+    print("    " * first_day, end="")
+
+    # Print the days of the month
+    for day in range(1, days_in_month + 1):
+        print(f"{day:3} ", end="")
+        if (first_day + day) % 7 == 0:   # New line after Saturday
+            print()
+
+    print()   # Final newline for formatting
+
+
+# Input year and month
+year = int(input("Enter the year: "))
+month = int(input("Enter the month (1-12): "))
+
+# Display the calendar
+display_calendar(year, month)
